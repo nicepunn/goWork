@@ -26,5 +26,5 @@ body {
     )
     rgb(var(--background-start-rgb)); */
   background: rgb(var(--my-background-rgb));
-  margin-top: 48px;
+  /* margin-top: 48px; */
 }
