@@ -2,7 +2,7 @@ import ThumbnailCard from "./ThumbnailCard";
 
 const allGoWorkJsonRaw = {
     "success": true,
-    "count": 2,
+    "count": 3,
     "pagination": {},
     "data": [
       {
@@ -25,9 +25,21 @@ const allGoWorkJsonRaw = {
         "province": "Bangkok",
         "postalcode": "10330",
         "tel": "+66 2-218-2929",
-        "picture": "https://drive.google.com/file/d/1Otx0rTEVbXahcxcXZTvoM9QnlRJmubOP/view?usp=sharing",
+        "picture": "https://drive.google.com/uc?id=1glL1RmdkdVSUDOmqxQvz6L3_5f2bgPpj",
         "__v": 0,
         "id": "6559aa83e8addd217fbe8df7"
+      },
+      {
+        "_id": "6559aa83e8addd217fbe8dg0",
+        "name": "Chula Engineering Libaray",
+        "operatingHours": "24 hours",
+        "address": "Faculty of Engineering Chulalongkorn University",
+        "province": "Bangkok",
+        "postalcode": "10330",
+        "tel": "+66 2-218-1234",
+        "picture": "",
+        "__v": 0,
+        "id": "6559aa83e8addd217fbe8dg0"
       }
     ]
   }

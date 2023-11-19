@@ -40,7 +40,7 @@ export default function ThumbnailCard(props: GoWorkProps) {
             </div>
 
             <TriggerButton onClick={handleOpen} className="w-[300px] h-[50px] bg-1975FF hover:bg-6FA9FF text-white font-semibold z-10 rounded-b-2xl flex flex-row place-content-center py-3">
-                    {props.name} <Image src='/whiteArrow.png' alt="arrow" width={20} height={20} className="ml-1"/>
+                    {props.name} <Image src='/whiteArrow.png' alt="arrow" width={20} height={20} className="ml-1 mt-px"/>
             </TriggerButton>
             <Modal
                 aria-labelledby="transition-modal-title"
