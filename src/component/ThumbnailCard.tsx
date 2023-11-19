@@ -17,7 +17,7 @@ interface GoWorkProps {
     operatingHours: string,
     address: string,
     province: string,
-    postelcode: string,
+    postalcode: string,
     tel: string,
     picture: string,
     __v: string,
@@ -51,16 +51,34 @@ export default function ThumbnailCard(props: GoWorkProps) {
             >
                 <Fade in={open}>
                     <ModalContent sx={style}>
-                        <h3 id="transition-modal-title" className="modal-title">
+                        <h3 id="transition-modal-title" className="modal-title font-bold">
                             {props.name}
                         </h3>
                         <span id="transition-modal-description" className="modal-description">
                             <div className="flex flex-row">
-                                {props.address}
-                                {props.province}
-                                {props.postelcode}
-                                {props.operatingHours}
-                                {props.tel}
+                                <div className="w-[300px] h-[300px] overflow-hidden relative m-2">
+                                    <Image src={props.picture}
+                                    alt='goWork Picture'
+                                    fill={true}
+                                    className='object-cover'/>
+                                </div>
+
+                                <div className="flex flex-col m-2">
+                                    <div className="flex flex-row">
+                                        <div className="font-semibold">Place: </div>{` ${props.address} ${props.province} ${props.postalcode}`}
+                                    </div>
+
+                                    <div className="flex flex-row">
+                                    <div className="font-semibold">Open: </div>{` ${props.operatingHours}`}
+                                    </div>
+                                    <div className="flex flex-row">
+                                    <div className="font-semibold">Tel: </div>{` ${props.tel}`}
+                                    </div>
+
+                                    {/* <div className="h-[1000px] w-[300px] bg-midnight">
+                                        for text max-height
+                                    </div> */}
+                                </div>
                             </div>
                         </span>
                     </ModalContent>
@@ -234,7 +252,7 @@ interface ModalProps {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 400,
+    width: '80vw'
   };
   
   const ModalContent = styled('div')(
