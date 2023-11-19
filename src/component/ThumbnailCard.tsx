@@ -1,7 +1,23 @@
 import Image from "next/image"
 
-export default function ThumbnailCard() {
 
+interface GoWorkProps {
+    _id: string,
+    name: string,
+    operatingHours: string,
+    address: string,
+    province: string,
+    postelcode: string,
+    tel: string,
+    picture: string,
+    __v: string,
+    id: string
+  }
+
+
+// export default function ThumbnailCard({id, imgUrl, details}: {id: string, imgUrl: string, details: string}) {
+
+export default function ThumbnailCard(props: GoWorkProps) {
     function openModal() {
         return (
             <div>
@@ -11,12 +27,15 @@ export default function ThumbnailCard() {
     }
 
     return (
-        <div className='w-[300px] h-[350px] bg-white flex-col text-center items-center rounded-2xl overflow-hidden'>
-            <div className="w-[300px] h-[300px] z-10 rounded-t-2xl ">
-
+        <div className='w-[300px] h-[350px] bg-white flex-col text-center items-center rounded-2xl my-10 mx-5'>
+            <div className="w-[300px] h-[300px] z-10 rounded-t-2xl overflow-hidden relative">
+                <Image src={props.picture}
+                alt='goWork Picture'
+                fill={true}
+                className='object-cover rounded-t-2xl'/>
             </div>
 
-            <div className="w-[300px] h-[50px] bg-6FA9FF hover:bg-1975FF text-white font-semibold z-10 rounded-b-2xl align-middle "
+            <div className="w-[300px] h-[50px] bg-1975FF hover:bg-6FA9FF text-white font-semibold z-10 rounded-b-2xl align-middle py-3"
             // onClick={(e) => {e.stopPropagation(); openModal()}}
             >
                 open modal
