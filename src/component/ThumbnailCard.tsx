@@ -35,10 +35,10 @@ export default function ThumbnailCard(props: GoWorkProps) {
                 className='object-cover rounded-t-2xl'/>
             </div>
 
-            <div className="w-[300px] h-[50px] bg-1975FF hover:bg-6FA9FF text-white font-semibold z-10 rounded-b-2xl align-middle py-3"
+            <div className="w-[300px] h-[50px] bg-1975FF hover:bg-6FA9FF text-white font-semibold z-10 rounded-b-2xl flex flex-row place-content-center py-3"
             // onClick={(e) => {e.stopPropagation(); openModal()}}
             >
-                open modal
+                    {props.name} <Image src='/whiteArrow.png' alt="arrow" width={20} height={20} className="ml-1"/>
             </div>
         </div>
     )
