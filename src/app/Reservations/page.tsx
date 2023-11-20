@@ -1,13 +1,75 @@
 import ReservedCard from "@/component/ReservedCard";
 
-// const ReservationsRaw =  
+const ReservationsRaw = {
+  "success": true,
+  "count": 3,
+  "pagination": {},
+  "data": [
+    {
+      "bookingId": "ABC123",
+      "bookingDate": "2023-11-20",
+      "numOfRooms": "2",
+
+      "_id": "123456789",
+      "name": "GoWork Space",
+      "operatingHours": "9:00 AM - 6:00 PM",
+      "address": "123 Main Street",
+      "province": "Example Province",
+      "postalcode": "A1B 2C3",
+      "tel": "+1 (555) 123-4567",
+      "picture": "https://drive.google.com/uc?id=1JinSybZyq4eMEJTUVewuh9X87DYznuc3",
+      "__v": "1",
+      "id": "987654321"
+    },
+    {
+      "bookingId": "DEF456",
+      "bookingDate": "2023-11-21",
+      "numOfRooms": "1",
+
+      "_id": "234567890",
+      "name": "CoWork Hub",
+      "operatingHours": "8:00 AM - 7:00 PM",
+      "address": "456 Business Blvd",
+      "province": "Sample State",
+      "postalcode": "X1Y 3Z9",
+      "tel": "+1 (555) 987-6543",
+      "picture": "https://drive.google.com/uc?id=1Otx0rTEVbXahcxcXZTvoM9QnlRJmubOP",
+      "__v": "2",
+      "id": "876543210"
+    },
+    {
+      "bookingId": "GHI789",
+      "bookingDate": "2023-11-22",
+      "numOfRooms": "3",
+
+      "_id": "345678901",
+      "name": "FlexOffice Solutions",
+      "operatingHours": "10:00 AM - 5:00 PM",
+      "address": "789 Flex Lane",
+      "province": "Demo County",
+      "postalcode": "M4N 5PQ",
+      "tel": "+1 (555) 321-8765",
+      "picture": "https://drive.google.com/uc?id=1JinSybZyq4eMEJTUVewuh9X87DYznuc3",
+      "__v": "3",
+      "id": "109876543"
+    }
+  ]
+}
+
+
 
 export default function Reservations() {
     return (
       <main className='w-[100%] flex flex-col items-center space-y-4 mt-[3vh]'>
-        <ReservedCard/>
-        <ReservedCard/>
-        <ReservedCard/>
+        {
+            ReservationsRaw.data.map((reservedItem: Object)=>(
+                <ReservedCard bookingId={reservedItem.bookingId} bookingDate={reservedItem.bookingDate} 
+                numOfRooms={reservedItem.numOfRooms} _id={reservedItem._id} name={reservedItem.name} 
+                operatingHours={reservedItem.operatingHours} address={reservedItem.address} 
+                province={reservedItem.province} postalcode={reservedItem.postalcode} tel={reservedItem.tel} 
+                picture={reservedItem.picture} __v={reservedItem.__v} id={reservedItem.id}/>
+            ))
+        }
       </main>
     )
   }

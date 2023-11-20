@@ -2,7 +2,6 @@
 
 import Image from "next/image"
 import { useState } from "react";
-import * as React from 'react';
 import { GoWorkModal, TriggerButton } from "./GoWorkModal";
 
 interface GoWorkProps {
