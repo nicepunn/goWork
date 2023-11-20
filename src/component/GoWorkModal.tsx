@@ -58,18 +58,23 @@ export function GoWorkModal(props: GoWorkModalProps) {
                             </div>
 
                             <div className="flex flex-col mt-px ml-[4%]">
-                                <div className="flex flex-row">
+                                <div className="flex flex-row mb-2">
                                     <div className="font-semibold">Place: </div>{` ${props.address} ${props.province} ${props.postalcode}`}
                                 </div>
 
-                                <div className="flex flex-row">
+                                <div className="flex flex-row mb-2">
                                     <div className="font-semibold">Open: </div>{` ${props.operatingHours}`}
                                 </div>
-                                <div className="flex flex-row">
+                                <div className="flex flex-row mb-2">
                                     <div className="font-semibold">Tel: </div>{` ${props.tel}`}
                                 </div>
+                                <div className="flex flex-row mb-2">
+                                    <div className="font-semibold">Reserve </div>
+                                </div>
 
-                                <GoWorkForm/>
+                                <div className="ml-[10%]">
+                                    <GoWorkForm/>
+                                </div>
 
                                 {/* <div className="h-[1000px] w-[300px] bg-midnight">
                                     for text max-height
