@@ -1,5 +1,7 @@
 import ReservedCard from "@/component/ReservedCard";
 
+// const ReservationsRaw =  
+
 export default function Reservations() {
     return (
       <main className='w-[100%] flex flex-col items-center space-y-4 mt-[3vh]'>
