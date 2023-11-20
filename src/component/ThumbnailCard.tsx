@@ -63,7 +63,7 @@ export default function ThumbnailCard(props: GoWorkProps) {
                                     className='object-cover'/>
                                 </div>
 
-                                <div className="flex flex-col m-2">
+                                <div className="flex flex-col mt-px ml-[4%]">
                                     <div className="flex flex-row">
                                         <div className="font-semibold">Place: </div>{` ${props.address} ${props.province} ${props.postalcode}`}
                                     </div>
