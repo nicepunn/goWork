@@ -8,10 +8,19 @@ import { FocusTrap } from '@mui/base/FocusTrap';
 import { Button } from '@mui/base/Button';
 import { unstable_useModal as useModal } from '@mui/base/unstable_useModal';
 import Fade from '@mui/material/Fade';
+import GoWorkForm from "./GoWorkForm";
 
 interface GoWorkModalProps {
+    // for modal
     handleClose: (event: {}, reason: "backdropClick" | "escapeKeyDown") => void,
     open: boolean,
+
+    // for booking
+    bookingId?: string,
+    bookingDate?: string,
+    numOfRooms?: string,
+
+    // for user
     _id: string,
     name: string,
     operatingHours: string,
@@ -54,11 +63,13 @@ export function GoWorkModal(props: GoWorkModalProps) {
                                 </div>
 
                                 <div className="flex flex-row">
-                                <div className="font-semibold">Open: </div>{` ${props.operatingHours}`}
+                                    <div className="font-semibold">Open: </div>{` ${props.operatingHours}`}
                                 </div>
                                 <div className="flex flex-row">
-                                <div className="font-semibold">Tel: </div>{` ${props.tel}`}
+                                    <div className="font-semibold">Tel: </div>{` ${props.tel}`}
                                 </div>
+
+                                <GoWorkForm/>
 
                                 {/* <div className="h-[1000px] w-[300px] bg-midnight">
                                     for text max-height
