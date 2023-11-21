@@ -10,7 +10,7 @@ import { Button } from '@mui/base/Button';
 import { unstable_useModal as useModal } from '@mui/base/unstable_useModal';
 import Fade from '@mui/material/Fade';
 // import GoWorkForm from "./GoWorkForm";
-import dayjs, { Dayjs } from "dayjs";
+import { Dayjs } from "dayjs";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "@/redux/store"
 
@@ -55,72 +55,72 @@ export function GoWorkModal(props: GoWorkModalProps) {
 
     const dispatch = useDispatch<AppDispatch>()
     const modalCreateBooking = () => {
-		if(date && RoomNum && props.modalType == "Create"){
-			const createItem: BookingItem = {
-                bookingId: props.bookingId,
-                bookingDate: date,
-                numOfRooms: RoomNum,
-                allNumOfRoom: props.allNumOfRoom,
+      if(date && RoomNum && props.modalType == "Create"){
+        const createItem: BookingItem = {
+                  bookingId: props.bookingId,
+                  bookingDate: date,
+                  numOfRooms: RoomNum,
+                  allNumOfRoom: props.allNumOfRoom,
 
-                //for goWork below
-                _id: props._id,
-                name: props.name,
-                operatingHours: props.operatingHours,
-                address: props.address,
-                province: props.province,
-                postalcode: props.postalcode,
-                tel: props.tel,
-                picture: props.picture,
-                __v: props.__v,
-                id: props.id
-			}
-			dispatch(addBooking(createItem))
-		}
-	}
+                  //for goWork below
+                  _id: props._id,
+                  name: props.name,
+                  operatingHours: props.operatingHours,
+                  address: props.address,
+                  province: props.province,
+                  postalcode: props.postalcode,
+                  tel: props.tel,
+                  picture: props.picture,
+                  __v: props.__v,
+                  id: props.id
+        }
+        dispatch(addBooking(createItem))
+      }
+    }
 
     const modalEditBooking = () => {
-		if(date && RoomNum && props.modalType == "Create"){
-			const item: BookingItem = {
-                bookingId: props.bookingId,
-                bookingDate: props.bookingDate,
-                numOfRooms: props.numOfRooms,
-                allNumOfRoom: props.allNumOfRoom,
+      if(date && RoomNum && props.modalType == "Create"){
+        const item: BookingItem = {
+                  bookingId: props.bookingId,
+                  bookingDate: props.bookingDate,
+                  numOfRooms: props.numOfRooms,
+                  allNumOfRoom: props.allNumOfRoom,
 
-                //for goWork below
-                _id: props._id,
-                name: props.name,
-                operatingHours: props.operatingHours,
-                address: props.address,
-                province: props.province,
-                postalcode: props.postalcode,
-                tel: props.tel,
-                picture: props.picture,
-                __v: props.__v,
-                id: props.id
-			}
+                  //for goWork below
+                  _id: props._id,
+                  name: props.name,
+                  operatingHours: props.operatingHours,
+                  address: props.address,
+                  province: props.province,
+                  postalcode: props.postalcode,
+                  tel: props.tel,
+                  picture: props.picture,
+                  __v: props.__v,
+                  id: props.id
+        }
 
-            const editItem: BookingItem = {
-                bookingId: props.bookingId,
-                bookingDate: date,
-                numOfRooms: RoomNum,
-                allNumOfRoom: props.allNumOfRoom,
+        const editItem: BookingItem = {
+                  bookingId: props.bookingId,
+                  bookingDate: date,
+                  numOfRooms: RoomNum,
+                  allNumOfRoom: props.allNumOfRoom,
 
-                //for goWork below
-                _id: props._id,
-                name: props.name,
-                operatingHours: props.operatingHours,
-                address: props.address,
-                province: props.province,
-                postalcode: props.postalcode,
-                tel: props.tel,
-                picture: props.picture,
-                __v: props.__v,
-                id: props.id
-			}
-			dispatch(removeBooking(item))
-            dispatch(addBooking(editItem))
-		}
-	}
+                  //for goWork below
+                  _id: props._id,
+                  name: props.name,
+                  operatingHours: props.operatingHours,
+                  address: props.address,
+                  province: props.province,
+                  postalcode: props.postalcode,
+                  tel: props.tel,
+                  picture: props.picture,
+                  __v: props.__v,
+                  id: props.id
+        }
+        dispatch(removeBooking(item))
+        dispatch(addBooking(editItem))
+      }
+    }
 
     return (
         <Modal
