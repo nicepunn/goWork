@@ -3,8 +3,15 @@
 import Image from "next/image"
 import { useState } from "react";
 import { GoWorkModal, TriggerButton } from "./GoWorkModal";
+import { Dayjs } from "dayjs";
 
 interface GoWorkProps {
+
+    bookingId?: string,
+    bookingDate?: Dayjs,
+    numOfRooms?: number,
+    allNumOfRoom: Array<number>,
+
     _id: string,
     name: string,
     operatingHours: string,
@@ -13,7 +20,7 @@ interface GoWorkProps {
     postalcode: string,
     tel: string,
     picture: string,
-    __v: string,
+    __v: number,
     id: string
 }
 
@@ -40,7 +47,10 @@ export default function ThumbnailCard(props: GoWorkProps) {
             _id={props._id} name={props.name} 
             operatingHours={props.operatingHours} address={props.address} 
             province={props.province} postalcode={props.postalcode} tel={props.tel} 
-            picture={props.picture} __v={props.__v} id={props.id}/>
+            picture={props.picture} __v={props.__v} id={props.id}
+            bookingDate={props.bookingDate ? props.bookingDate : null}
+            bookingId={props.bookingId ? props.bookingId : null} numOfRooms={props.numOfRooms ? props.numOfRooms : null}
+            allNumOfRoom={props.allNumOfRoom}/>
         </div>
     )
 }

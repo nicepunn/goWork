@@ -9,6 +9,7 @@ import { Button } from '@mui/base/Button';
 import { unstable_useModal as useModal } from '@mui/base/unstable_useModal';
 import Fade from '@mui/material/Fade';
 import GoWorkForm from "./GoWorkForm";
+import { Dayjs } from "dayjs";
 
 interface GoWorkModalProps {
     // for modal
@@ -16,9 +17,10 @@ interface GoWorkModalProps {
     open: boolean,
 
     // for booking
-    bookingId?: string,
-    bookingDate?: string,
-    numOfRooms?: string,
+    bookingId: string | null,
+    bookingDate: Dayjs | null,
+    numOfRooms: number | null,
+    allNumOfRoom: Array<number>,
 
     // for user
     _id: string,
@@ -29,7 +31,7 @@ interface GoWorkModalProps {
     postalcode: string,
     tel: string,
     picture: string,
-    __v: string,
+    __v: number,
     id: string
 }
 
@@ -73,7 +75,9 @@ export function GoWorkModal(props: GoWorkModalProps) {
                                 </div>
 
                                 <div className="ml-[10%]">
-                                    <GoWorkForm/>
+                                    <GoWorkForm bookingDate={props.bookingDate ? props.bookingDate : null}
+                                    bookingId={props.bookingId ? props.bookingId : null} numOfRooms={props.numOfRooms ? props.numOfRooms : null}
+                                    allNumOfRoom={props.allNumOfRoom}/>
                                 </div>
 
                                 {/* <div className="h-[1000px] w-[300px] bg-midnight">
