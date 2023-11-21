@@ -67,8 +67,16 @@ export default function ReservedCard(props: ReservedProps) {
                     className='object-cover rounded-t-2xl'/>
                 </div>
 
-                <div className="w-[70%] h-[200px] bg-white z-10 overflow-hidden relative flex flex-col">
-                    {dayjs(props.bookingDate).format('YYYY/MM/DD')}
+                <div className="w-[70%] h-[200px] bg-white z-10 overflow-hidden relative flex flex-col items-center mt-2 ml-2">
+                    <div className="flex flex-row mb-10 font-bold">
+                        {props.name}
+                    </div>
+                    <div className="flex flex-row mb-2">
+                        <div className="font-semibold">Reserved Date: </div>{dayjs(props.bookingDate).format('YYYY/MM/DD')}
+                    </div>
+                    <div className="flex flex-row mb-2">
+                        <div className="font-semibold">Room NO: </div>{props.numOfRooms}
+                    </div>
                 </div>
 
                 <button className="w-[5%] h-[200px] bg-FF8989 hover:bg-FFB5B5 z-10 rounded-r-2xl overflow-hidden relative flex flex-row place-content-center py-[90px]"

@@ -14,7 +14,7 @@ import { Dayjs } from "dayjs";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "@/redux/store"
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { Select, MenuItem } from '@mui/material'
@@ -50,8 +50,14 @@ interface GoWorkModalProps {
 
 export function GoWorkModal(props: GoWorkModalProps) {
 
-    const [date, setDate] = useState<Dayjs | null>(props.bookingDate);
+    // const [date, setDate] = useState<Dayjs | null>(props.bookingDate);
+    const [date, setDate] = useState<Dayjs | null>(null);
     const [RoomNum, setRoomNum] = useState<number | null>(props.numOfRooms);
+
+    // useEffect(() => {
+    //   setDate(props.bookingDate);
+    //   setRoomNum(props.numOfRooms);
+    // }, [props.handleClose])
 
     const dispatch = useDispatch<AppDispatch>()
     const modalCreateBooking = () => {
@@ -379,6 +385,8 @@ interface ModalProps {
   
   const ModalContent = styled('div')(
     ({ theme }) => `
+    // align-items: center;
+    // justify-content: center;
     display: flex;
     flex-direction: column;
     gap: 8px;
