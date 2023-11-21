@@ -18,7 +18,7 @@ import { useState } from "react";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { Select, MenuItem } from '@mui/material'
-import { addBooking } from "@/redux/features/bookSlice";
+import { addBooking, removeBooking } from "@/redux/features/bookSlice";
 import { BookingItem } from "../../interfaces";
 
 interface GoWorkModalProps {
@@ -54,9 +54,9 @@ export function GoWorkModal(props: GoWorkModalProps) {
     const [RoomNum, setRoomNum] = useState<number | null>(props.numOfRooms);
 
     const dispatch = useDispatch<AppDispatch>()
-    const createBooking = () => {
+    const modalCreateBooking = () => {
 		if(date && RoomNum && props.modalType == "Create"){
-			const item: BookingItem = {
+			const createItem: BookingItem = {
                 bookingId: props.bookingId,
                 bookingDate: date,
                 numOfRooms: RoomNum,
@@ -74,7 +74,51 @@ export function GoWorkModal(props: GoWorkModalProps) {
                 __v: props.__v,
                 id: props.id
 			}
-			dispatch(addBooking(item))
+			dispatch(addBooking(createItem))
+		}
+	}
+
+    const modalEditBooking = () => {
+		if(date && RoomNum && props.modalType == "Create"){
+			const item: BookingItem = {
+                bookingId: props.bookingId,
+                bookingDate: props.bookingDate,
+                numOfRooms: props.numOfRooms,
+                allNumOfRoom: props.allNumOfRoom,
+
+                //for goWork below
+                _id: props._id,
+                name: props.name,
+                operatingHours: props.operatingHours,
+                address: props.address,
+                province: props.province,
+                postalcode: props.postalcode,
+                tel: props.tel,
+                picture: props.picture,
+                __v: props.__v,
+                id: props.id
+			}
+
+            const editItem: BookingItem = {
+                bookingId: props.bookingId,
+                bookingDate: date,
+                numOfRooms: RoomNum,
+                allNumOfRoom: props.allNumOfRoom,
+
+                //for goWork below
+                _id: props._id,
+                name: props.name,
+                operatingHours: props.operatingHours,
+                address: props.address,
+                province: props.province,
+                postalcode: props.postalcode,
+                tel: props.tel,
+                picture: props.picture,
+                __v: props.__v,
+                id: props.id
+			}
+			dispatch(removeBooking(item))
+            dispatch(addBooking(editItem))
 		}
 	}
 
@@ -145,8 +189,10 @@ export function GoWorkModal(props: GoWorkModalProps) {
                                 </div>
                                 <div className="flex flex-row-reverse">
                                     <button className="bg-1975FF hover:bg-6FA9FF text-white rounded-lg w-[40%]"
-                                    onClick={(e) => {createBooking; props.handleClose(e, "backdropClick")}}
-                                    // onClick={(e) => {props.handleClose(e, "backdropClick")}}
+                                    onClick={(e) => {
+                                        props.modalType == "Create"? modalCreateBooking: modalEditBooking;
+                                        props.handleClose(e, "backdropClick")
+                                    }}
                                     >
                                         {props.modalType == "Create" ? "Book": "Edit"}
                                     </button>
