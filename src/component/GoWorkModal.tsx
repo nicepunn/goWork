@@ -1,3 +1,4 @@
+'use client'
 
 import Image from "next/image"
 import * as React from 'react';
@@ -17,6 +18,8 @@ import { useState } from "react";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { Select, MenuItem } from '@mui/material'
+import { addBooking } from "@/redux/features/bookSlice";
+import { BookingItem } from "../../interfaces";
 
 interface GoWorkModalProps {
     modalType: string,
@@ -50,19 +53,30 @@ export function GoWorkModal(props: GoWorkModalProps) {
     const [date, setDate] = useState<Dayjs | null>(props.bookingDate);
     const [RoomNum, setRoomNum] = useState<number | null>(props.numOfRooms);
 
-    // const dispatch = useDispatch<AppDispatch>()
-    // const createBooking = () => {
-	// 	if(date && RoomNum && props.modalType == "Create"){
-	// 		const item: BookingItem = {
-	// 			name: name,
-	// 			surname: surname,
-	// 			id: id,
-	// 			date: dayjs(reserveDate).format('YYYY/MM/DD'),
-	// 			location: location
-	// 		}
-	// 		dispatch(addBooking(item))
-	// 	}
-	// }
+    const dispatch = useDispatch<AppDispatch>()
+    const createBooking = () => {
+		if(date && RoomNum && props.modalType == "Create"){
+			const item: BookingItem = {
+                bookingId: props.bookingId,
+                bookingDate: date,
+                numOfRooms: RoomNum,
+                allNumOfRoom: props.allNumOfRoom,
+
+                //for goWork below
+                _id: props._id,
+                name: props.name,
+                operatingHours: props.operatingHours,
+                address: props.address,
+                province: props.province,
+                postalcode: props.postalcode,
+                tel: props.tel,
+                picture: props.picture,
+                __v: props.__v,
+                id: props.id
+			}
+			dispatch(addBooking(item))
+		}
+	}
 
     return (
         <Modal
@@ -131,8 +145,8 @@ export function GoWorkModal(props: GoWorkModalProps) {
                                 </div>
                                 <div className="flex flex-row-reverse">
                                     <button className="bg-1975FF hover:bg-6FA9FF text-white rounded-lg w-[40%]"
-                                    // onClick={createBooking}>
-                                    onClick={(e) => { props.handleClose(e, "backdropClick")}}
+                                    onClick={(e) => {createBooking; props.handleClose(e, "backdropClick")}}
+                                    // onClick={(e) => {props.handleClose(e, "backdropClick")}}
                                     >
                                         {props.modalType == "Create" ? "Book": "Edit"}
                                     </button>

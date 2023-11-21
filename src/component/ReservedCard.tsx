@@ -3,11 +3,13 @@
 import Image from "next/image"
 import { useState } from "react";
 import { GoWorkModal, TriggerButton } from "./GoWorkModal";
+import { Dayjs } from "dayjs";
 
 interface ReservedProps {
-    bookingId: string,
-    bookingDate: string,
-    numOfRooms: string,
+    bookingId?: string,
+    bookingDate?: Dayjs,
+    numOfRooms?: number,
+    allNumOfRoom: Array<number>,
 
     //for goWork below
     _id: string,
@@ -18,7 +20,7 @@ interface ReservedProps {
     postalcode: string,
     tel: string,
     picture: string,
-    __v: string,
+    __v: number,
     id: string
 }
 
@@ -50,10 +52,13 @@ export default function ReservedCard(props: ReservedProps) {
             </TriggerButton>
 
             <GoWorkModal handleClose={handleClose} open={open}
-            _id={props._id} name={props.name} 
-            operatingHours={props.operatingHours} address={props.address} 
-            province={props.province} postalcode={props.postalcode} tel={props.tel} 
-            picture={props.picture} __v={props.__v} id={props.id}/>
+            _id={props._id} name={props.name}
+            operatingHours={props.operatingHours} address={props.address}
+            province={props.province} postalcode={props.postalcode} tel={props.tel}
+            picture={props.picture} __v={props.__v} id={props.id} modalType={"Edit"}
+            bookingDate={props.bookingDate ? props.bookingDate : null}
+            bookingId={props.bookingId ? props.bookingId : null} numOfRooms={props.numOfRooms ? props.numOfRooms : null}
+            allNumOfRoom={props.allNumOfRoom}/>
         </div>
         
 
