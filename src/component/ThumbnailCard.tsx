@@ -44,13 +44,13 @@ export default function ThumbnailCard(props: GoWorkProps) {
             </TriggerButton>
             
             <GoWorkModal handleClose={handleClose} open={open}
-            _id={props._id} name={props.name} 
-            operatingHours={props.operatingHours} address={props.address} 
-            province={props.province} postalcode={props.postalcode} tel={props.tel} 
+            _id={props._id} name={props.name}
+            operatingHours={props.operatingHours} address={props.address}
+            province={props.province} postalcode={props.postalcode} tel={props.tel}
             picture={props.picture} __v={props.__v} id={props.id}
             bookingDate={props.bookingDate ? props.bookingDate : null}
             bookingId={props.bookingId ? props.bookingId : null} numOfRooms={props.numOfRooms ? props.numOfRooms : null}
-            allNumOfRoom={props.allNumOfRoom}/>
+            allNumOfRoom={props.allNumOfRoom} modalType={"Create"}/>
         </div>
     )
 }

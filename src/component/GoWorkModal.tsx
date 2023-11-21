@@ -8,10 +8,20 @@ import { FocusTrap } from '@mui/base/FocusTrap';
 import { Button } from '@mui/base/Button';
 import { unstable_useModal as useModal } from '@mui/base/unstable_useModal';
 import Fade from '@mui/material/Fade';
-import GoWorkForm from "./GoWorkForm";
-import { Dayjs } from "dayjs";
+// import GoWorkForm from "./GoWorkForm";
+import dayjs, { Dayjs } from "dayjs";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "@/redux/store"
+
+import { useState } from "react";
+import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+import { Select, MenuItem } from '@mui/material'
 
 interface GoWorkModalProps {
+    modalType: string,
+    // Create or Edit
+
     // for modal
     handleClose: (event: {}, reason: "backdropClick" | "escapeKeyDown") => void,
     open: boolean,
@@ -36,6 +46,23 @@ interface GoWorkModalProps {
 }
 
 export function GoWorkModal(props: GoWorkModalProps) {
+
+    const [date, setDate] = useState<Dayjs | null>(props.bookingDate);
+    const [RoomNum, setRoomNum] = useState<number | null>(props.numOfRooms);
+
+    // const dispatch = useDispatch<AppDispatch>()
+    // const createBooking = () => {
+	// 	if(date && RoomNum && props.modalType == "Create"){
+	// 		const item: BookingItem = {
+	// 			name: name,
+	// 			surname: surname,
+	// 			id: id,
+	// 			date: dayjs(reserveDate).format('YYYY/MM/DD'),
+	// 			location: location
+	// 		}
+	// 		dispatch(addBooking(item))
+	// 	}
+	// }
 
     return (
         <Modal
@@ -74,10 +101,41 @@ export function GoWorkModal(props: GoWorkModalProps) {
                                     <div className="font-semibold">Reserve </div>
                                 </div>
 
-                                <div className="ml-[10%]">
-                                    <GoWorkForm bookingDate={props.bookingDate ? props.bookingDate : null}
-                                    bookingId={props.bookingId ? props.bookingId : null} numOfRooms={props.numOfRooms ? props.numOfRooms : null}
-                                    allNumOfRoom={props.allNumOfRoom}/>
+                                <div className="ml-[10%] mb-4">
+                                <div className="text-md text-left text-gray-600">
+                                    Date
+                                </div>
+                                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                                    <DatePicker className="bg-white w-[100%] mb-2"
+                                    value={date}
+                                    onChange = {(value)=>{setDate(value);}}/>
+                                </LocalizationProvider>
+                                <div className="text-md text-left text-gray-600">
+                                    Room NO.
+                                </div>
+                                {/* <input type="text" className="bg-white w-[100%] h-[2em] rounded-md px-2 py-1 shadow-sm"
+                                    placeholder="Room NO."
+                                    value={props.numOfRooms}
+                                    onChange={(value)=>{setRoomNum(value.target.value);}}/> */}
+                                <Select variant="standard" name="NumOfRoom" id="NumOfRoom"
+                                value={RoomNum} className="h-[2em] w-[100%]"
+                                onChange={(e)=>{setRoomNum(e.target.value? parseInt(e.target.value.toString()): null);}}>
+                                    {
+                                        props.allNumOfRoom.map((numOfRoomItem)=>(
+                                            <MenuItem key={numOfRoomItem} value={numOfRoomItem}>
+                                                {numOfRoomItem}
+                                            </MenuItem>
+                                        ))
+                                    }
+                                </Select>
+                                </div>
+                                <div className="flex flex-row-reverse">
+                                    <button className="bg-1975FF hover:bg-6FA9FF text-white rounded-lg w-[40%]"
+                                    // onClick={createBooking}>
+                                    onClick={(e) => { props.handleClose(e, "backdropClick")}}
+                                    >
+                                        {props.modalType == "Create" ? "Book": "Edit"}
+                                    </button>
                                 </div>
 
                                 {/* <div className="h-[1000px] w-[300px] bg-midnight">
