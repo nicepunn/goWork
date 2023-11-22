@@ -6,6 +6,7 @@ import ReduxProvider from '@/redux/ReduxProvider'
 import { getServerSession } from 'next-auth'
 import { authOptions } from './api/auth/[...nextauth]/route'
 import NextAuthProvider from '@/providers/NextAuthProvider'
+import SignInOut from '@/component/SignInOut'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -26,7 +27,12 @@ export default async function RootLayout({
         <ReduxProvider>
           <NextAuthProvider session={nextAuthSession}>
             <div className='mx-10 my-[10vw]'>
-              <NavBar/>
+              <div className='flex flex-row'>
+                <NavBar/>
+                <div className='w-[100px] h-[50px] bg-6FA9FF item-center absolute right-0 rounded-l-lg'>
+                  <SignInOut/>
+                </div>
+              </div>
               {children}
             </div>
           </NextAuthProvider>
