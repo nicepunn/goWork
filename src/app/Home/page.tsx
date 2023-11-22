@@ -1,6 +1,4 @@
 import GoworkCatalog from "@/component/GoWorkCatalog";
-import ThumbnailCard from "@/component/ThumbnailCard";
-
 const allGoWorkJsonRaw = {
   "success": true,
   "count": 3,
@@ -44,11 +42,12 @@ const allGoWorkJsonRaw = {
     }
   ]
 }
-export default function Home() {
-    return (
-      <main >
-        <GoworkCatalog allGoWorkJson={allGoWorkJsonRaw}/>
-      </main>
-    )
-  }
+export default async function Home() {
+    
+  return (
+    <main >
+      <GoworkCatalog allGoWorkJson={allGoWorkJsonRaw}/>
+    </main>
+  )
+}
 

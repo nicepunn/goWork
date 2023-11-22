@@ -29,7 +29,7 @@ export default async function RootLayout({
             <div className='mx-10 my-[10vw]'>
               <div className='flex flex-row'>
                 <NavBar/>
-                <div className='w-[100px] h-[50px] bg-6FA9FF item-center absolute right-0 rounded-l-lg'>
+                <div className='w-[100px] h-[50px] bg-1975FF hover:bg-6FA9FF item-center absolute right-0 rounded-l-lg'>
                   <SignInOut/>
                 </div>
               </div>

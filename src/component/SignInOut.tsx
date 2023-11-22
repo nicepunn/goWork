@@ -11,7 +11,7 @@ export default async function SignInOut() {
 				session?
 				<Link href="api/auth/signout">
 					<div className='items-center px-3 py-3 text-white font-bold'>
-						Sign-out of {session.user?.name}
+						Sign-out
                     </div>
 				</Link>
 				:
