@@ -54,10 +54,31 @@ export function GoWorkModal(props: GoWorkModalProps) {
     const [date, setDate] = useState<Dayjs | null>(null);
     const [RoomNum, setRoomNum] = useState<number | null>(props.numOfRooms);
 
-    // useEffect(() => {
-    //   setDate(props.bookingDate);
-    //   setRoomNum(props.numOfRooms);
-    // }, [props.handleClose])
+
+    const [isPrevent, setPrevent] = useState(false);
+    const preventUseEffect = async () => {
+      setPrevent(true);
+      const wait02s = async () => {
+        await setTimeout(() => {
+          setPrevent(false);
+        } ,2000);
+      }
+      wait02s().catch(console.error)
+    }
+
+
+    useEffect(() => {
+        const wait01s = async () => {
+          await setTimeout(() => {
+            if (!isPrevent) {
+                  setDate(null);
+                  setRoomNum(props.numOfRooms);
+            }
+          } ,100);
+        }
+
+        wait01s().catch(console.error)
+    }, [props.handleClose])
 
     const dispatch = useDispatch<AppDispatch>()
     const modalCreateBooking = () => {
@@ -197,6 +218,7 @@ export function GoWorkModal(props: GoWorkModalProps) {
                                     <button className="bg-1975FF hover:bg-6FA9FF text-white rounded-lg w-[40%]"
                                     onClick={(e) => {
                                         props.modalType == "Create"? modalCreateBooking: modalEditBooking;
+                                        preventUseEffect();
                                         props.handleClose(e, "backdropClick")
                                     }}
                                     >
