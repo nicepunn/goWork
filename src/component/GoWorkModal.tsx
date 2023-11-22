@@ -101,6 +101,7 @@ export function GoWorkModal(props: GoWorkModalProps) {
                   __v: props.__v,
                   id: props.id
         }
+        console.log("Create booking")
         dispatch(addBooking(createItem))
       }
     }
@@ -144,6 +145,7 @@ export function GoWorkModal(props: GoWorkModalProps) {
                   __v: props.__v,
                   id: props.id
         }
+        console.log("Edit booking")
         dispatch(removeBooking(item))
         dispatch(addBooking(editItem))
       }
@@ -217,7 +219,7 @@ export function GoWorkModal(props: GoWorkModalProps) {
                                 <div className="flex flex-row-reverse">
                                     <button className="bg-1975FF hover:bg-6FA9FF text-white rounded-lg w-[40%]"
                                     onClick={(e) => {
-                                        props.modalType == "Create"? modalCreateBooking: modalEditBooking;
+                                        props.modalType == "Create"? modalCreateBooking(): modalEditBooking();
                                         // preventUseEffect();
                                         props.handleClose(e, "backdropClick")
                                     }}

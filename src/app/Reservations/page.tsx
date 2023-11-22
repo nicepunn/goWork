@@ -86,8 +86,9 @@ export default function Reservations() {
     return (
       <main className='w-[100%] flex flex-col items-center space-y-4 mt-[3vh]'>
         {
-          bookingItems.length === 0?
-            bookingItems.data.map((reservedItem: Object)=>(
+          bookingItems.length === 0? <></>
+          :
+            bookingItems.map((reservedItem: Object)=>(
                 <ReservedCard bookingId={reservedItem.bookingId} bookingDate={reservedItem.bookingDate}
               numOfRooms={reservedItem.numOfRooms} _id={reservedItem._id} name={reservedItem.name}
               operatingHours={reservedItem.operatingHours} address={reservedItem.address}
@@ -95,8 +96,6 @@ export default function Reservations() {
               picture={reservedItem.picture} __v={reservedItem.__v} id={reservedItem.id} 
               allNumOfRoom={[1, 2, 3]}/>
             ))
-            :
-            <></>
         }
       </main>
     )
