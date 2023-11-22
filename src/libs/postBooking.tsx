@@ -1,5 +1,5 @@
 export default async function postGoWork(token:string, coworkingspaceId: string,
-    bookingDate: string, numOfRooms: string, createAt: string) {
+    bookingDate: string, numOfRooms: number, createAt: string) {
         const response = await fetch(`http://localhost:5000/api/v1/coworkingspaces/${coworkingspaceId}/bookings`, {
             method: 'POST',
             headers: {

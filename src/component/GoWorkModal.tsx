@@ -10,7 +10,7 @@ import { Button } from '@mui/base/Button';
 import { unstable_useModal as useModal } from '@mui/base/unstable_useModal';
 import Fade from '@mui/material/Fade';
 // import GoWorkForm from "./GoWorkForm";
-import { Dayjs } from "dayjs";
+import dayjs, { Dayjs } from "dayjs";
 import { useDispatch } from "react-redux";
 import { AppDispatch, useAppSelector } from "@/redux/store"
 
@@ -20,6 +20,11 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { Select, MenuItem } from '@mui/material'
 import { addBooking, removeBooking } from "@/redux/features/bookSlice";
 import { BookingItem } from "../../interfaces";
+import postBooking from "@/libs/postBooking";
+import { useSession } from "next-auth/react";
+import session from "redux-persist/lib/storage/session";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { getServerSession } from 'next-auth';
 
 interface GoWorkModalProps {
     modalType: string,
@@ -50,7 +55,8 @@ interface GoWorkModalProps {
 
 export function GoWorkModal(props: GoWorkModalProps) {
 
-    // const [date, setDate] = useState<Dayjs | null>(props.bookingDate);
+
+
     const [date, setDate] = useState<Dayjs | null>(null);
     const [RoomNum, setRoomNum] = useState<number | null>(props.numOfRooms);
 
@@ -82,10 +88,17 @@ export function GoWorkModal(props: GoWorkModalProps) {
 
     const dispatch = useDispatch<AppDispatch>()
     const bookingItems = useAppSelector(state => state.bookSlice.bookItems)
-    
-    const modalCreateBooking = () => {
+
+    const modalCreateBooking = async () => {
       if (bookingItems.length <= 2) {
+
         if(date && RoomNum && props.modalType == "Create"){
+          // const session = await getServerSession(authOptions)
+          // console.log(`my user token = ${session?.user.token}`)
+
+          // if (!session || !session.user.token) return null
+          // postBooking(session?.user.token, props._id, dayjs(date).format('YYYY/MM/DD'), RoomNum, dayjs().format('YYYY/MM/DD'))
+
           const createItem: BookingItem = {
                     bookingId: props.bookingId,
                     bookingDate: date,

@@ -49,8 +49,8 @@ import { useEffect, useState } from "react";
 // }
 export default function Home() {
 
-  const {data: session} = useSession()
-  console.log(`my user token = ${session?.user.token}`)
+  // const {data: session} = useSession()
+  // console.log(`my user token = ${session?.user.token}`)
 
   const [allGoWorkResponse, setAllGoWorkResponse] = useState(null);
 
