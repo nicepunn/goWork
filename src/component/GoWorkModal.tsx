@@ -12,7 +12,7 @@ import Fade from '@mui/material/Fade';
 // import GoWorkForm from "./GoWorkForm";
 import { Dayjs } from "dayjs";
 import { useDispatch } from "react-redux";
-import { AppDispatch } from "@/redux/store"
+import { AppDispatch, useAppSelector } from "@/redux/store"
 
 import { useEffect, useState } from "react";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
@@ -81,28 +81,34 @@ export function GoWorkModal(props: GoWorkModalProps) {
     }, [props.handleClose])
 
     const dispatch = useDispatch<AppDispatch>()
+    const bookingItems = useAppSelector(state => state.bookSlice.bookItems)
+    
     const modalCreateBooking = () => {
-      if(date && RoomNum && props.modalType == "Create"){
-        const createItem: BookingItem = {
-                  bookingId: props.bookingId,
-                  bookingDate: date,
-                  numOfRooms: RoomNum,
-                  allNumOfRoom: props.allNumOfRoom,
+      if (bookingItems.length <= 2) {
+        if(date && RoomNum && props.modalType == "Create"){
+          const createItem: BookingItem = {
+                    bookingId: props.bookingId,
+                    bookingDate: date,
+                    numOfRooms: RoomNum,
+                    allNumOfRoom: props.allNumOfRoom,
 
-                  //for goWork below
-                  _id: props._id,
-                  name: props.name,
-                  operatingHours: props.operatingHours,
-                  address: props.address,
-                  province: props.province,
-                  postalcode: props.postalcode,
-                  tel: props.tel,
-                  picture: props.picture,
-                  __v: props.__v,
-                  id: props.id
+                    //for goWork below
+                    _id: props._id,
+                    name: props.name,
+                    operatingHours: props.operatingHours,
+                    address: props.address,
+                    province: props.province,
+                    postalcode: props.postalcode,
+                    tel: props.tel,
+                    picture: props.picture,
+                    __v: props.__v,
+                    id: props.id
+          }
+          console.log("Create booking")
+          dispatch(addBooking(createItem))
         }
-        console.log("Create booking")
-        dispatch(addBooking(createItem))
+      } else {
+        alert("You can't book more than 3 rooms in the same period");
       }
     }
 
