@@ -82,7 +82,7 @@ export default function ReservedCard(props: ReservedProps) {
                 <button className="w-[5%] h-[200px] bg-FF8989 hover:bg-FFB5B5 z-10 rounded-r-2xl overflow-hidden relative flex flex-row place-content-center py-[90px]"
                 onClick={(e =>{
                     e.stopPropagation();
-                    reservedCardDeleteBooking
+                    reservedCardDeleteBooking()
                     })}
                 >
                     <Image src='/deleteIcon.png' alt="delete" width={20} height={20}/>
