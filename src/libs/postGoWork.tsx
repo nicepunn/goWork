@@ -1,8 +1,9 @@
-export default async function postGoWork(name: string, address: string, operatingHours:string,
+export default async function postGoWork(token:string, name: string, address: string, operatingHours:string,
     province: string, postalcode: string, tel: string, picture: string) {
         const response = await fetch('http://localhost:5000/api/v1/coworkingspaces', {
             method: 'POST',
             headers: {
+                authorization: `Bearer ${token}`,
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({

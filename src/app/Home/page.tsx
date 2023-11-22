@@ -2,6 +2,7 @@
 
 import GoworkCatalog from "@/component/GoWorkCatalog";
 import getAllGoWork from "@/libs/getAllGoWork";
+import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 // const allGoWorkJsonRaw = {
 //   "success": true,
@@ -47,6 +48,9 @@ import { useEffect, useState } from "react";
 //   ]
 // }
 export default function Home() {
+
+  const {data: session} = useSession()
+  console.log(`my user token = ${session?.user.token}`)
 
   const [allGoWorkResponse, setAllGoWorkResponse] = useState(null);
 
