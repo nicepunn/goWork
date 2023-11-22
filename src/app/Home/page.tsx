@@ -1,4 +1,8 @@
+'use client'
+
 import GoworkCatalog from "@/component/GoWorkCatalog";
+import getAllGoWork from "@/libs/getAllGoWork";
+import { useEffect, useState } from "react";
 const allGoWorkJsonRaw = {
   "success": true,
   "count": 3,
@@ -42,11 +46,21 @@ const allGoWorkJsonRaw = {
     }
   ]
 }
-export default async function Home() {
+export default function Home() {
+
+  const [allGoWorkResponse, setAllGoWorkResponse] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const allGoWork = await getAllGoWork()
+      setAllGoWorkResponse(allGoWork)
+    }
+  }, [])
+
     
   return (
     <main >
-      <GoworkCatalog allGoWorkJson={allGoWorkJsonRaw}/>
+      <GoworkCatalog allGoWorkJson={allGoWorkResponse}/>
     </main>
   )
 }
