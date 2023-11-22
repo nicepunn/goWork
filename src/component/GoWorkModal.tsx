@@ -107,7 +107,7 @@ export function GoWorkModal(props: GoWorkModalProps) {
     }
 
     const modalEditBooking = () => {
-      if(date && RoomNum && props.modalType == "Create"){
+      if(date && RoomNum && props.modalType == "Edit"){
         const item: BookingItem = {
                   bookingId: props.bookingId,
                   bookingDate: props.bookingDate,

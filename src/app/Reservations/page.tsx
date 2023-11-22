@@ -86,7 +86,8 @@ export default function Reservations() {
     return (
       <main className='w-[100%] flex flex-col items-center space-y-4 mt-[3vh]'>
         {
-          bookingItems.length === 0? <></>
+          bookingItems.length === 0?
+          <div className='text-2xl'>No Reserved goWork</div>
           :
             bookingItems.map((reservedItem: Object)=>(
                 <ReservedCard bookingId={reservedItem.bookingId} bookingDate={reservedItem.bookingDate}
