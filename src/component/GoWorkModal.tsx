@@ -55,25 +55,25 @@ export function GoWorkModal(props: GoWorkModalProps) {
     const [RoomNum, setRoomNum] = useState<number | null>(props.numOfRooms);
 
 
-    const [isPrevent, setPrevent] = useState(false);
-    const preventUseEffect = async () => {
-      setPrevent(true);
-      const wait02s = async () => {
-        await setTimeout(() => {
-          setPrevent(false);
-        } ,2000);
-      }
-      wait02s().catch(console.error)
-    }
+    // const [isPrevent, setPrevent] = useState(false);
+    // const preventUseEffect = async () => {
+    //   setPrevent(true);
+    //   const wait02s = async () => {
+    //     await setTimeout(() => {
+    //       setPrevent(false);
+    //     } ,2000);
+    //   }
+    //   wait02s().catch(console.error)
+    // }
 
 
     useEffect(() => {
         const wait01s = async () => {
           await setTimeout(() => {
-            if (!isPrevent) {
+            // if (!isPrevent) {
                   setDate(null);
                   setRoomNum(props.numOfRooms);
-            }
+            // }
           } ,100);
         }
 
@@ -218,7 +218,7 @@ export function GoWorkModal(props: GoWorkModalProps) {
                                     <button className="bg-1975FF hover:bg-6FA9FF text-white rounded-lg w-[40%]"
                                     onClick={(e) => {
                                         props.modalType == "Create"? modalCreateBooking: modalEditBooking;
-                                        preventUseEffect();
+                                        // preventUseEffect();
                                         props.handleClose(e, "backdropClick")
                                     }}
                                     >
